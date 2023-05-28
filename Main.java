@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        int game = 0;
+
         if (args.length < 3) {
             System.out.println("Provide at least 3 options.");
             return;
@@ -25,6 +27,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
+            System.out.println("Game: " + game);
+
             HMACGenerator hmacGenerator = new HMACGenerator();
             int computerMove = moveGenerator.generateMove();
             String hmac = hmacGenerator.generateHmac(gameOptions.getOption(computerMove));
@@ -63,6 +67,8 @@ public class Main {
             System.out.println(resultCalculator.calculateResult(userMove, computerMove));
             System.out.println("HMAC key: " + hmacGenerator.getSecretKey());
             System.out.println();
+
+            game ++;
         }
 
     }
